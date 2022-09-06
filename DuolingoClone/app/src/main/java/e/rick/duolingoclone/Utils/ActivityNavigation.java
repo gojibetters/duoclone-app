@@ -1,5 +1,6 @@
 package e.rick.duolingoclone.Utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 
@@ -17,6 +18,7 @@ import e.rick.duolingoclone.ui.tasks.WordTask.WordTaskActivity;
 
 public class ActivityNavigation {
 
+    @SuppressLint("StaticFieldLeak")
     static ActivityNavigation INSTANCE;
 
     Context context;

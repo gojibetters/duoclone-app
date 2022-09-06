@@ -1,12 +1,15 @@
 package e.rick.duolingoclone.ui.activity.SelectLanguageActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.ImageView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
-import android.widget.ImageView;
+
+import com.google.firebase.FirebaseApp;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,16 +21,21 @@ import e.rick.duolingoclone.R;
 
 public class SelectLanguageActivity extends AppCompatActivity {
 
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.back_button)
     ImageView backButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_course);
+
+        FirebaseApp.initializeApp(this);
 
         ButterKnife.bind(this);
 
@@ -38,18 +46,12 @@ public class SelectLanguageActivity extends AppCompatActivity {
 
         LanguageAdapter languageAdapter = new LanguageAdapter(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        RvDividerItemDecoration itemDecoration = new RvDividerItemDecoration(getDrawable(R.drawable.recycler_view_divider));
+        @SuppressLint("UseCompatLoadingForDrawables") RvDividerItemDecoration itemDecoration = new RvDividerItemDecoration(getDrawable(R.drawable.recycler_view_divider));
 
         recyclerView.setAdapter(languageAdapter);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(itemDecoration);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                onBackPressed();
-            }
-        });
+        backButton.setOnClickListener(v -> onBackPressed());
     }
 }

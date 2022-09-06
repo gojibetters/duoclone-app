@@ -64,13 +64,7 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
                     .child(language)
                     .child("overall_progress")
                     .setValue(0)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-
-                            Log.d(TAG, "New language has been set successfully");
-                        }
-                    });
+                    .addOnSuccessListener(aVoid -> Log.d(TAG, "New language has been set successfully"));
         }
     }
 
@@ -96,13 +90,7 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
                     .child("week_xp")
                     .child(dayOfWeek)
                     .setValue(xp)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-
-                            Log.d(TAG, "XP for day " + dayOfWeek + " has been settled properly");
-                        }
-                    });
+                    .addOnSuccessListener(aVoid -> Log.d(TAG, "XP for day " + dayOfWeek + " has been settled properly"));
         }
     }
 
@@ -117,13 +105,7 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
                     .child(userID)
                     .child("user_xp")
                     .setValue(xp)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-
-                            Log.d(TAG, "Total user's xp updated");
-                        }
-                    });
+                    .addOnSuccessListener(aVoid -> Log.d(TAG, "Total user's xp updated"));
         }
     }
 
@@ -143,13 +125,7 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
                     .child(userID)
                     .child("last_visited")
                     .setValue(lastVisited)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-
-                            Log.d(TAG, "Last time user visited has been updated");
-                        }
-                    });
+                    .addOnSuccessListener(aVoid -> Log.d(TAG, "Last time user visited has been updated"));
         }
     }
 
@@ -164,13 +140,7 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
                     .child(userID)
                     .child("daily_goal")
                     .setValue(dailyGoal)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-
-                            Log.d(TAG, "User's daily goal has been updated");
-                        }
-                    });
+                    .addOnSuccessListener(aVoid -> Log.d(TAG, "User's daily goal has been updated"));
         }
     }
 
@@ -185,13 +155,7 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
                     .child(userID)
                     .child("user_data")
                     .setValue(userData)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-
-                            Log.d(TAG, "User's data has been updated");
-                        }
-                    });
+                    .addOnSuccessListener(aVoid -> Log.d(TAG, "User's data has been updated"));
         }
     }
 
@@ -211,13 +175,7 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
                     .child("lessons")
                     .child(lesson)
                     .setValue(completeness)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-
-                            Log.d(TAG, "User has completed this lesson");
-                        }
-                    });
+                    .addOnSuccessListener(aVoid -> Log.d(TAG, "User has completed this lesson"));
         }
     }
 
@@ -243,13 +201,7 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
                     .child(lesson.toLowerCase())
                     .child("completed_date")
                     .setValue(completedDate)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-
-                            Log.d(TAG, "User's data has been updated");
-                        }
-                    });
+                    .addOnSuccessListener(aVoid -> Log.d(TAG, "User's data has been updated"));
         }
     }
 

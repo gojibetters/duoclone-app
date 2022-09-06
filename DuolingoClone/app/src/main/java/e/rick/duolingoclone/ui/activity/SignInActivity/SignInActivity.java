@@ -16,10 +16,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +30,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import e.rick.duolingoclone.ui.activity.lessonlistactivity.LessonListActivity;
+import e.rick.duolingoclone.ui.activity.LessonListActivity.LessonListActivity;
 import e.rick.duolingoclone.ui.activity.WelcomeActivity.WelcomeActivity;
 import e.rick.duolingoclone.R;
 import e.rick.duolingoclone.Utils.ActivityNavigation;
@@ -67,8 +69,13 @@ public class SignInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+        FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_sign_in);
+
+
 
         ButterKnife.bind(this);
 
@@ -80,63 +87,54 @@ public class SignInActivity extends AppCompatActivity {
         mAuth = Injection.providesAuthHelper().getAuthInstance();
 
         authUser();
-//        instantiateGoogle();
+        instantiateGoogle();
         googleSignInListener();
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        backButton.setOnClickListener(v -> {
 
-                Intent intent = new Intent(SignInActivity.this, WelcomeActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(SignInActivity.this, WelcomeActivity.class);
+            startActivity(intent);
         });
     }
 
     private void authUser() {
 
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        signInButton.setOnClickListener(view -> {
 
-                String email = tvEmail.getText().toString();
-                String password = etPassword.getText().toString();
+            String email = tvEmail.getText().toString();
+            String password = etPassword.getText().toString();
 
-                if (!isStringNull(email) || !isStringNull(password)) {
+            if (!isStringNull(email) || !isStringNull(password)) {
 
-                    if (checkEmail(email) && checkPassword(password)) {
+                if (checkEmail(email) && checkPassword(password)) {
 
-                        mAuth.signInWithEmailAndPassword(email, password)
-                                .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(SignInActivity.this, task -> {
 
-                                        if (!task.isSuccessful()) {
+                                if (!task.isSuccessful()) {
 
-                                            Toast.makeText(context, getString(R.string.auth_failed),
-                                                    Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, getString(R.string.auth_failed),
+                                            Toast.LENGTH_SHORT).show();
 
-                                        } else {
+                                } else {
 
-                                            Intent intent = new Intent(SignInActivity.this, LessonListActivity.class);
-                                            startActivity(intent);
-                                        }
-                                    }
-                                });
+                                    Intent intent = new Intent(SignInActivity.this, LessonListActivity.class);
+                                    startActivity(intent);
+                                }
+                            });
 
-                    } else if (!checkEmail(email)) {
+                } else if (!checkEmail(email)) {
 
-                        Toast.makeText(context, getString(R.string.invalid_email), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, getString(R.string.invalid_email), Toast.LENGTH_SHORT).show();
 
-                    } else if (!checkPassword(password)) {
+                } else if (!checkPassword(password)) {
 
-                        Toast.makeText(context, getString(R.string.invalid_password), Toast.LENGTH_SHORT).show();
-                    }
-
-                } else {
-
-                    Toast.makeText(context, getString(R.string.blankEditText), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, getString(R.string.invalid_password), Toast.LENGTH_SHORT).show();
                 }
+
+            } else {
+
+                Toast.makeText(context, getString(R.string.blankEditText), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -174,12 +172,12 @@ public class SignInActivity extends AppCompatActivity {
 
     private void instantiateGoogle() {
 
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestIdToken(getString(R.string.default_web_client_id))
-//                .requestEmail()
-//                .build();
-//
-//        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("385006452620-f7u77tt2c5nf4tph1qnk0kdnbbo1s3t3.apps.googleusercontent.com")
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
 
     private void googleSignInListener() {

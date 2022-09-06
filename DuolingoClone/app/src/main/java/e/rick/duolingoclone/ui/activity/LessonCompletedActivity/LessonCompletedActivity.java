@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
+
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -13,7 +13,7 @@ import com.orhanobut.hawk.Hawk;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import e.rick.duolingoclone.Data.Repository;
-import e.rick.duolingoclone.ui.activity.lessonlistactivity.LessonListActivity;
+import e.rick.duolingoclone.ui.activity.LessonListActivity.LessonListActivity;
 import e.rick.duolingoclone.R;
 import e.rick.duolingoclone.Utils.CustomProgressBar;
 import e.rick.duolingoclone.Utils.Injection;
@@ -84,13 +84,10 @@ public class LessonCompletedActivity extends AppCompatActivity{
 
         dailyGoal = Hawk.get("dailyGoal");
 
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        continueButton.setOnClickListener(v -> {
 
-                Intent intent = new Intent(LessonCompletedActivity.this, LessonListActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(LessonCompletedActivity.this, LessonListActivity.class);
+            startActivity(intent);
         });
 
         setupProgressBar();
@@ -112,16 +109,13 @@ public class LessonCompletedActivity extends AppCompatActivity{
 
             dailyXp += 10;
 
-            Hawk.put("dailyXp", dailyXp);
-            repository.setDailyXp(dailyXp);
-
         } else {
 
             dailyXp = 10;
 
-            Hawk.put("dailyXp", dailyXp);
-            repository.setDailyXp(dailyXp);
         }
+        Hawk.put("dailyXp", dailyXp);
+        repository.setDailyXp(dailyXp);
 
         dailyProgressBar.setMax(dailyGoal);
 

@@ -1,5 +1,6 @@
 package e.rick.duolingoclone.ui.tasks.WordTask;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
@@ -15,8 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
+//import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.firebase.FirebaseApp;
 import com.nex3z.flowlayout.FlowLayout;
 import com.orhanobut.hawk.Hawk;
 
@@ -37,21 +39,27 @@ public class WordTaskActivity extends AppCompatActivity {
 
     private static final String TAG = "WordTaskActivity";
 
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.sentence_line)
     FlowLayout sentenceLine;
 
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.main_layout)
     RelativeLayout mainLayout;
 
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.answer_container)
     RelativeLayout answerContainer;
 
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.check_button)
     Button checkButton;
 
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.question)
     TextView tvQuestion;
 
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.task_progress_bar)
     ProgressBar progressBar;
 
@@ -79,6 +87,8 @@ public class WordTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_task);
 
+        FirebaseApp.initializeApp(this);
+
         ButterKnife.bind(this);
 
         initCustomLayout();
@@ -87,6 +97,7 @@ public class WordTaskActivity extends AppCompatActivity {
 
     private class TouchListener implements View.OnTouchListener {
 
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
 
@@ -149,6 +160,7 @@ public class WordTaskActivity extends AppCompatActivity {
     private void checkAnswer() {
 
          checkButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint({"SetTextI18n", "UseCompatLoadingForDrawables"})
             @Override
             public void onClick(View view) {
 
@@ -160,7 +172,7 @@ public class WordTaskActivity extends AppCompatActivity {
 
                         customWord = (CustomWord) sentenceLine.getChildAt(i);
 
-                        answer.append(customWord.getText().toString() + " ");
+                        answer.append(customWord.getText().toString()).append(" ");
                     }
 
                     if (answer.toString().equals(questionModel.getAnswer() + " ")) {
@@ -168,12 +180,6 @@ public class WordTaskActivity extends AppCompatActivity {
                         Toast.makeText(WordTaskActivity.this, "You Are Correct!", Toast.LENGTH_SHORT).show();
 
                         progressBarValue += 10;
-
-                        progressBar.setProgress(progressBarValue);
-
-                        Hawk.put("progressBarValue", progressBarValue);
-
-                        lockViews();
 
                     } else {
 
@@ -188,12 +194,10 @@ public class WordTaskActivity extends AppCompatActivity {
                             progressBarValue = 0;
                         }
 
-                        progressBar.setProgress(progressBarValue);
-
-                        Hawk.put("progressBarValue", progressBarValue);
-
-                        lockViews();
                     }
+                    progressBar.setProgress(progressBarValue);
+                    Hawk.put("progressBarValue", progressBarValue);
+                    lockViews();
 
                     checkButton.setText("continue");
                     checkButton.setBackground(getDrawable(R.drawable.button_task_continue));
@@ -254,6 +258,7 @@ public class WordTaskActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void randomizeCustomWords() {
 
         String[] wordsFromSentence = questionModel.getAnswer().split(" ");
@@ -300,27 +305,28 @@ public class WordTaskActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-
-        new MaterialDialog.Builder(this)
-                .title("Are you sure about that?")
-                .content("All progress in this lesson will be lost.")
-                .positiveText("QUIT")
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-
-                        progressBarValue = 0;
-
-                        Hawk.put("progressBarValue", progressBarValue);
-
-                        finish();
-                    }
-                })
-                .negativeText("CANCEL")
-                .show();
-    }
+//    @Override
+//    public void onBackPressed() {
+//
+//        new MaterialDialog.Builder(this)
+//                .title("Are you sure about that?")
+//                .content("All progress in this lesson will be lost.")
+//                .positiveText("QUIT")
+//                .onPositive(new MaterialDialog.Companion() {
+//
+//                    @Override
+//                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+//
+//                        progressBarValue = 0;
+//
+//                        Hawk.put("progressBarValue", progressBarValue);
+//
+//                        finish();
+//                    }
+//                })
+//                .negativeText("CANCEL")
+//                .show();
+//    }
 
     @Override
     protected void onStop() {

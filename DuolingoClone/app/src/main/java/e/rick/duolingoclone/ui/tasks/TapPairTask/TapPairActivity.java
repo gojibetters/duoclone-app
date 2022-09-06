@@ -2,17 +2,15 @@ package e.rick.duolingoclone.ui.tasks.TapPairTask;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.nex3z.flowlayout.FlowLayout;
 import com.orhanobut.hawk.Hawk;
 
@@ -24,10 +22,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import e.rick.duolingoclone.Data.Repository;
 import e.rick.duolingoclone.Model.PairModel;
-import e.rick.duolingoclone.ui.tasks.CustomWord;
 import e.rick.duolingoclone.R;
 import e.rick.duolingoclone.Utils.ActivityNavigation;
 import e.rick.duolingoclone.Utils.Injection;
+import e.rick.duolingoclone.ui.tasks.CustomWord;
 
 /**
  * Created by Rick on 3/3/2018.
@@ -261,27 +259,28 @@ public class TapPairActivity extends AppCompatActivity{
         this.searchingPair = searchingPair;
     }
 
-    @Override
-    public void onBackPressed() {
-
-        new MaterialDialog.Builder(this)
-                .title("Are you sure about that?")
-                .content("All progress in this lesson will be lost.")
-                .positiveText("QUIT")
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-
-                        progressBarValue = 0;
-
-                        Hawk.put("progressBarValue", progressBarValue);
-
-                        finish();
-                    }
-                })
-                .negativeText("CANCEL")
-                .show();
-    }
+    //@Override
+//    public void onBackPressed() {
+//
+//        new MaterialDialog.Builder(this)
+//                .title("Are you sure about that?")
+//                .content("All progress in this lesson will be lost.")
+//                .positiveText("QUIT")
+//                .onPositive(new MaterialDialog.SingleButtonCallback() {
+//
+//                    @Override
+//                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogActionExtKt which) {
+//
+//                        progressBarValue = 0;
+//
+//                        Hawk.put("progressBarValue", progressBarValue);
+//
+//                        finish();
+//                    }
+//                })
+//                .negativeText("CANCEL")
+//                .show();
+//    }
 
     @Override
     protected void onStop() {

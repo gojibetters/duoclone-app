@@ -1,5 +1,6 @@
 package e.rick.duolingoclone.ui.tasks;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -15,11 +16,12 @@ import e.rick.duolingoclone.ui.tasks.WordTask.CustomLayout;
  * Created by Rick on 2/26/2018.
  */
 
+@SuppressLint("ViewConstructor")
 public class CustomWord extends AppCompatTextView {
 
     private static final String TAG = "CustomWord";
 
-    private String word;
+    private final String word;
 
     public CustomWord(Context context, String word) {
         super(context);

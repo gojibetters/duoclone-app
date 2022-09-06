@@ -14,7 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.orhanobut.hawk.Hawk;
 
@@ -190,27 +189,27 @@ public class TSTaskActivity extends AppCompatActivity{
         });
     }
 
-    @Override
-    public void onBackPressed() {
-
-        new MaterialDialog.Builder(this)
-                .title("Are you sure about that?")
-                .content("All progress in this lesson will be lost.")
-                .positiveText("QUIT")
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-
-                        progressBarValue = 0;
-
-                        Hawk.put("progressBarValue", progressBarValue);
-
-                        finish();
-                    }
-                })
-                .negativeText("CANCEL")
-                .show();
-    }
+//    @Override
+//    public void onBackPressed() {
+//
+//        new MaterialDialog.Builder(this)
+//                .title("Are you sure about that?")
+//                .content("All progress in this lesson will be lost.")
+//                .positiveText("QUIT")
+//                .onPositive(new MaterialDialog.SingleButtonCallback() {
+//                    @Override
+//                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+//
+//                        progressBarValue = 0;
+//
+//                        Hawk.put("progressBarValue", progressBarValue);
+//
+//                        finish();
+//                    }
+//                })
+//                .negativeText("CANCEL")
+//                .show();
+//    }
 
     @Override
     protected void onStop() {

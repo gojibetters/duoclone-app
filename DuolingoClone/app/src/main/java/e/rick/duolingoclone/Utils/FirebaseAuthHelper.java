@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class FirebaseAuthHelper {
 
+
     public static FirebaseAuthHelper INSTANCE;
     public FirebaseAuth mAuth;
 

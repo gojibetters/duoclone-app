@@ -38,21 +38,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void initData() {
 
-        getStartedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        getStartedButton.setOnClickListener(view -> goToGetStartedScreen());
 
-                goToGetStartedScreen();
-            }
-        });
-
-        logInLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                goToSignInScreen();
-            }
-        });
+        logInLink.setOnClickListener(view -> goToSignInScreen());
     }
 
     private void goToSignInScreen() {

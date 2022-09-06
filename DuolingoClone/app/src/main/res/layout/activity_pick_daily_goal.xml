@@ -162,10 +162,11 @@
         android:id="@+id/continue_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_task_continue"
-        android:textColor="@color/button_task_continue"
-        android:textSize="17sp"
         android:layout_alignParentBottom="true"
-        android:text="continue" />
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_task_continue"
+        android:text="continue"
+        android:textColor="@color/button_task_continue"
+        android:textSize="17sp" />
 
 </RelativeLayout>
