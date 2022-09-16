@@ -47,11 +47,13 @@ public class WelcomeActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
+
     }
 
     private void goToGetStartedScreen() {
 
         Intent intent = new Intent(this, SelectLanguageActivity.class);
         startActivity(intent);
+
     }
 }

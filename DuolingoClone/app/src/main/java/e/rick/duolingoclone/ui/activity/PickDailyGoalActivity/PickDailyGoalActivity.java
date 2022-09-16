@@ -66,6 +66,8 @@ public class PickDailyGoalActivity extends AppCompatActivity {
         regularGoal.setChecked(true);
 
         continueListener();
+
+        changeScreenMain();
     }
 
     private void setRadioButton() {
@@ -113,5 +115,12 @@ public class PickDailyGoalActivity extends AppCompatActivity {
 
             repository.setDailyGoal(dailyGoal);
         });
+    }
+
+    private void changeScreenMain(){
+
+        Intent it = new Intent(this, LessonListActivity.class);
+        startActivity(it);
+
     }
 }
