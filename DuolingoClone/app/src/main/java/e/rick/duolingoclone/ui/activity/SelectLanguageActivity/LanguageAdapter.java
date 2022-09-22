@@ -2,6 +2,8 @@ package e.rick.duolingoclone.ui.activity.SelectLanguageActivity;
 
 import android.content.Context;
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -39,6 +41,7 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.ViewHo
         this.context = context;
     }
 
+    @NonNull
     @Override
     public LanguageAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.select_course_item, parent, false);
@@ -53,15 +56,12 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.ViewHo
 
         holder.tvLanguage.setText(language);
 
-        holder.main_item_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.main_item_layout.setOnClickListener(v -> {
 
-                repository.setNewLanguage(language.toLowerCase());
+            repository.setNewLanguage(language.toLowerCase());
 
-                Intent intent = new Intent(context, PickDailyGoalActivity.class);
-                context.startActivity(intent);
-            }
+            Intent intent = new Intent(context, PickDailyGoalActivity.class);
+            context.startActivity(intent);
         });
     }
 
@@ -70,7 +70,7 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.ViewHo
         return languages.length;
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.language)
         TextView tvLanguage;

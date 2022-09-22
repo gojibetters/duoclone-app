@@ -3,7 +3,6 @@ package e.rick.duolingoclone.ui.tasks.WordTask;
 import android.annotation.SuppressLint;
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.FirebaseApp;
 import com.nex3z.flowlayout.FlowLayout;
 import com.orhanobut.hawk.Hawk;

@@ -2,7 +2,7 @@ package e.rick.duolingoclone.ui.tasks.TranslateSentenceTask;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
@@ -14,7 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.orhanobut.hawk.Hawk;
 
 import butterknife.BindView;

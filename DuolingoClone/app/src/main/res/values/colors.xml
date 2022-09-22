@@ -37,5 +37,8 @@
 
     <color name="blue_background">#00abe4</color>
     <color name="default_light_grey_bg">#f5f5f5</color>
+    <color name="bckg_main_dark_blue">#06091a</color>
+    <color name="bckg_btmnav_white_blue">#FF0019f9</color>
+    <color name="bckg_btmnav_white">#FFFFFFFF</color>
 
 </resources>

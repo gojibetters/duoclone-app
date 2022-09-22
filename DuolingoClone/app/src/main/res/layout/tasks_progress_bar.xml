@@ -10,8 +10,8 @@
         android:id="@+id/close_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_task_close"
-        android:layout_marginRight="8dp"/>
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_task_close" />
 
     <ProgressBar
         android:id="@+id/task_progress_bar"

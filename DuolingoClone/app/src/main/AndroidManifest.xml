@@ -7,26 +7,26 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:name=".DuolingoApp"
+        android:name="e.rick.com.gojibetters.robii.DuolingoApp"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".ui.tasks.WordTask.WordTaskActivity"/>
+        <activity android:name="e.rick.com.gojibetters.robii.ui.tasks.WordTask.WordTaskActivity"/>
 
-        <activity android:name=".ui.tasks.TranslateSentenceTask.TSTaskActivity" />
+        <activity android:name="e.rick.com.gojibetters.robii.ui.tasks.TranslateSentenceTask.TSTaskActivity" />
 
-        <activity android:name=".ui.tasks.TapPairTask.TapPairActivity" />
+        <activity android:name="e.rick.com.gojibetters.robii.ui.tasks.TapPairTask.TapPairActivity" />
 
-        <activity android:name=".ui.activity.LessonListActivity.LessonListActivity"/>
+        <activity android:name="e.rick.com.gojibetters.robii.ui.activity.LessonListActivity.LessonListActivity"/>
 
-        <activity android:name=".ui.activity.SignInActivity.SignInActivity"/>
+        <activity android:name="e.rick.com.gojibetters.robii.ui.activity.SignInActivity.SignInActivity"/>
 
-        <activity android:name=".ui.activity.LessonCompletedActivity.LessonCompletedActivity" />
+        <activity android:name="e.rick.com.gojibetters.robii.ui.activity.LessonCompletedActivity.LessonCompletedActivity" />
 
-        <activity android:name=".ui.activity.SelectLanguageActivity.SelectLanguageActivity" />
+        <activity android:name="e.rick.com.gojibetters.robii.ui.activity.SelectLanguageActivity.SelectLanguageActivity" />
 
-        <activity android:name=".ui.activity.PickDailyGoalActivity.PickDailyGoalActivity" />
+        <activity android:name="e.rick.com.gojibetters.robii.ui.activity.PickDailyGoalActivity.PickDailyGoalActivity" />
 
-        <activity android:name=".ui.activity.WelcomeActivity.WelcomeActivity"
+        <activity android:name="e.rick.com.gojibetters.robii.ui.activity.WelcomeActivity.WelcomeActivity"
             android:exported="true">
 
         <intent-filter>

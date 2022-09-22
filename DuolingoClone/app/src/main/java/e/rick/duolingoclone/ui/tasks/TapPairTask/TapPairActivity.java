@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -43,6 +44,12 @@ public class TapPairActivity extends AppCompatActivity{
 
     @BindView(R.id.task_progress_bar)
     ProgressBar progressBar;
+
+    @BindView(R.id.close_task)
+    ImageView closeTask;
+
+    @BindView(R.id.back_button)
+    ImageView backButton;
 
     ArrayList<PairModel> pairs;
     ArrayList<CustomWord> compareWords = new ArrayList<>();
@@ -212,22 +219,20 @@ public class TapPairActivity extends AppCompatActivity{
 
     private void checkButtonListener() {
 
-        checkButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        checkButton.setOnClickListener(view -> {
 
-                if (progressBarValue < 100) {
+            if (progressBarValue < 100) {
 
-                    ActivityNavigation.getInstance(context).takeToRandomTask();
+                ActivityNavigation.getInstance(context).takeToRandomTask();
 
-                } else {
+            } else {
 
-                    progressBarValue = 0;
+                progressBarValue = 0;
 
-                    Hawk.put("progressBarValue", progressBarValue);
-                }
+                Hawk.put("progressBarValue", progressBarValue);
             }
         });
+
     }
 
     private void checkCompleteness() {
@@ -259,30 +264,7 @@ public class TapPairActivity extends AppCompatActivity{
         this.searchingPair = searchingPair;
     }
 
-    //@Override
-//    public void onBackPressed() {
-//
-//        new MaterialDialog.Builder(this)
-//                .title("Are you sure about that?")
-//                .content("All progress in this lesson will be lost.")
-//                .positiveText("QUIT")
-//                .onPositive(new MaterialDialog.SingleButtonCallback() {
-//
-//                    @Override
-//                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogActionExtKt which) {
-//
-//                        progressBarValue = 0;
-//
-//                        Hawk.put("progressBarValue", progressBarValue);
-//
-//                        finish();
-//                    }
-//                })
-//                .negativeText("CANCEL")
-//                .show();
-//    }
-
-    @Override
+     @Override
     protected void onStop() {
 
         progressBarValue = 0;
