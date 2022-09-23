@@ -73,9 +73,6 @@ public class LessonListActivity extends AppCompatActivity {
 
     private ActivityLessonListBinding mBinding;
 
-    private NavHostFragment mNavHostFragment;
-    private NavHostController mNavController;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,8 +92,8 @@ public class LessonListActivity extends AppCompatActivity {
     }
 
     private void initNavigation () {
-        mNavHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-        mNavController = (NavHostController) mNavHostFragment.getNavController();
+        NavHostFragment mNavHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        NavHostController mNavController = (NavHostController) mNavHostFragment.getNavController();
         NavigationUI.setupWithNavController(mBinding.bottomNavigation, mNavController);
 
     }

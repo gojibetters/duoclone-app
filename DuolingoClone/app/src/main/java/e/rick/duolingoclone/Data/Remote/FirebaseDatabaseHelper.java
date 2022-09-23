@@ -117,7 +117,7 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
 
             Date date = Calendar.getInstance().getTime();
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY", Locale.US);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
             String lastVisited = dateFormat.format(date);
 
             myRef.child("user")
@@ -189,7 +189,7 @@ public class FirebaseDatabaseHelper implements DataSource.Remote {
 
             Date date = Calendar.getInstance().getTime();
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY", Locale.US);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
             String completedDate = dateFormat.format(date);
 
             myRef.child("user")
